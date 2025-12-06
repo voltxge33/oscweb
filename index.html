@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>PORT IS 5198</h1>
+        <button id="send">GO</button>
+        <script type="text/javascript" src="node_modules/osc-js/lib/osc.min.js"></script>
+        <script type="text/javascript">
+        function sendosc(Messag) {
+            var osc = new OSC();
+            osc.open(); // connect by default to ws://localhost:8080
+            osc.on('open', () => {
+            var message = new OSC.Message(Messag);
+            osc.send(message);
+            console.log("OSC Sent");
+            osc.close();
+            });
+        }
+        document.getElementById('send').addEventListener('click', () => sendosc('/go'));
+        document.getElementById('')
+        </script>
+
+    </body>
+</html>
